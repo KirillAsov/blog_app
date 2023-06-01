@@ -34,7 +34,7 @@ h2 {
 .input_field {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
 } 
 .input_title {
     width: 100%;
