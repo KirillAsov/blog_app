@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper_blog">
+            <div class="blog__inner input_field">
+                <h2>Новый пост</h2>
+                <div class="title">
+                    <input id="input_title" class="input_title" type="text" placeholder="заголовок">
+                    <p id="validationInfo_title" class="validationInfo">0/100</p>
+                </div>
+                <div class="text">
+                    <textarea id="input_text"class="input_text"name="text" placeholder="напишите пост"></textarea>
+                    <p id="validationInfo_text" class="validationInfo">0/100</p>
+                </div>
+                <button id="public_post_btn" class="public_post_btn">Опубликовать
+                    <span id="tooltip" class="tooltip">
+                        <p id="tooltip__alert-title" class="tooltip__alert-title">Заголовок должен быть не более 5 символов</p>
+                        <p id="tooltip__alert-text" class="tooltip__alert-text">Длина поста должна быть не более 10 символов</p></span>
+                </button>
+            </div>
+            <div class="blog__inner showing_posts">
+                <h2>Лента</h2>
+                <div id="posts_list" class="empty_list">Пока лента пуста</div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
+

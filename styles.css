@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+button {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+h2 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+}
+.container {
+    width: 1100px;
+    margin: 0 auto;
+}
+.wrapper_blog {
+    display: flex;
+    column-gap: 100px;
+}
+.blog__inner {
+    width: calc(50% - 50px);
+}
+.input_field {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+} 
+.input_title {
+    width: 100%;
+    height: 60px;
+    padding-left: 3px;
+    font-size: inherit;
+    font-family: inherit;
+}
+.validationInfo {
+    margin-top: 3px;
+    text-align: right;
+    font-size: 15px;
+    line-height: 18px;
+}
+.alert_value {
+    color: red;
+}
+.input_text {
+    width: 100%;
+    height: 250px;
+    padding-left: 3px;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size: inherit;
+    font-family: inherit;
+    resize: none;
+}
+.public_post_btn {
+    height: 60px;
+    background-color: rgba(0, 148, 255, 1);
+    color: white;
+    border: none;
+    position: relative;
+}
+.public_post_btn:disabled {
+    opacity: 0.7;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: black;
+    top: -110%;
+    left: 0;
+    padding: 10px;
+    font-size: 15px;
+    line-height: 17px;   
+}
+.tooltip::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -30px;
+    border: 20px solid transparent; border-top: 20px solid black;
+
+}
+.public_post_btn:disabled:hover .tooltip {
+    display: block;
+    opacity: 1;
+}
+.posts_list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.post_item {
+    color: black;
+    font-size: 25px;
+    line-height: 30px;
+}
+.post_item__title {
+    font-weight: 700;
+}
+.post_item__date {
+    color: rgba(0, 148, 255, 1);
+}
+.empty_list {
+    color: rgba(151, 151, 151, 1);
+}
