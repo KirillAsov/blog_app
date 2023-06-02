@@ -17,11 +17,17 @@
                 <h2>Новый пост</h2>
                 <div class="title">
                     <input id="input_title" class="input_title" type="text" placeholder="заголовок">
-                    <p id="validationInfo_title" class="validationInfo">0/100</p>
+                    <div class="validationInfo">
+                        <p id="validationInfo__title-alert" class="validationInfo__title-alert">введите заголовок</p>
+                        <p id="validationInfo__title-lenght" class="validationInfo__lenght">0/100</p>
+                    </div>
                 </div>
                 <div class="text">
                     <textarea id="input_text"class="input_text"name="text" placeholder="напишите пост"></textarea>
-                    <p id="validationInfo_text" class="validationInfo">0/100</p>
+                    <div class="validationInfo">
+                        <p id="validationInfo__text-alert" class="validationInfo__text-alert">введите пост</p>
+                        <p id="validationInfo__text-lenght" class="validationInfo">0/100</p>
+                    </div>
                 </div>
                 <button id="public_post_btn" class="public_post_btn">Опубликовать
                     <span id="tooltip" class="tooltip">
@@ -31,11 +37,15 @@
             </div>
             <div class="blog__inner showing_posts">
                 <h2>Лента</h2>
-                <div id="posts_list" class="empty_list">Пока лента пуста</div>
+                <div id="posts_list">
+                    <h3 class="empty__list-item">Пока лента пуста</h3>
+                </div>
             </div>
         </div>
     </div>
     <script src="index.js"></script>
 </body>
 </html>
+
+
 
