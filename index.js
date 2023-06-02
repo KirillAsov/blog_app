@@ -5,8 +5,10 @@ const inputTextNode = document.getElementById ('input_text');
 const publicPostBtn = document.getElementById ('public_post_btn');
 
 const postsListNode = document.getElementById ('posts_list')
-const validationInfoTitleNode = document.getElementById('validationInfo_title');
-const validationInfoTextNode = document.getElementById('validationInfo_text');
+const validationInfoTitleAlert = document.getElementById('validationInfo__title-alert')
+const validationInfoTextAlert = document.getElementById('validationInfo__text-alert')
+const validationInfoTitleNode = document.getElementById('validationInfo__title-lenght');
+const validationInfoTextNode = document.getElementById('validationInfo__text-lenght');
 const toolTipNode = document.getElementById('tooltip');
 const toolTipAlertTitleNode = document.getElementById('tooltip__alert-title');
 const toolTipAlertTextNode = document.getElementById('tooltip__alert-text');
@@ -58,12 +60,26 @@ inputTextNode.addEventListener('input', checkingLenght);
 
 publicPostBtn.addEventListener('click', function() {
     const postFormUser = getPostFromUser ();   
+    if (!inputTitleNode.value && !inputTextNode.value) {
+        validationInfoTitleAlert.style.visibility = "visible";
+        validationInfoTextAlert.style.visibility = "visible";
+        return;
+    }
     if (!inputTitleNode.value) {
+        validationInfoTitleAlert.style.visibility = "visible";
         return
+    }
+    else {
+        validationInfoTitleAlert.style.visibility = "hidden";
     };
     if (!inputTextNode.value) {
+        validationInfoTextAlert.style.visibility = "visible";
         return
+    }
+    else {
+        validationInfoTextAlert.style.visibility = "hidden";
     };
+    
     inputClearing ();
     addPost(postFormUser);
     renderPost();
@@ -86,11 +102,11 @@ function inputClearing () {
 }
 
 function addPost({title, text}) {
-    const nowDate = new Date().toLocaleString();
+    const currentDate = new Date().toLocaleString();
     posts.push({
         title,
         text,
-        nowDate
+        currentDate
     });
 }
 
@@ -99,7 +115,7 @@ function renderPost() {
     posts.forEach(post => {
         postHTML += 
         `<div class="posts_list">
-            <p class="post_item post_item__date">${post.nowDate}</p>
+            <p class="post_item post_item__date">${post.currentDate}</p>
             <p class="post_item post_item__title">${post.title}</p>
             <p class="post_item post_item__text">${post.text}</p>
         </div>`;
