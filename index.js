@@ -19,7 +19,6 @@ const LIMIT_LENGHT_TEXT = 20;
 validationInfoTitleNode.innerText = `0/${LIMIT_LENGHT_TITLE}`
 validationInfoTextNode.innerText = `0/${LIMIT_LENGHT_TEXT}`
 
-
 const disabledBtn = () => {
     const titleLength = inputTitleNode.value.length;
     const textLength = inputTextNode.value.length;
@@ -31,56 +30,48 @@ const disabledBtn = () => {
     }
     toolTipAlertTitleNode.innerText = `Заголовок должен быть не более ${LIMIT_LENGHT_TITLE} символов`; 
     toolTipAlertTextNode.innerText = `Длина поста должна быть не более ${LIMIT_LENGHT_TEXT} символов`;
-    
 }
-const checkingLenght = () => {
+
+const showWarningLenght = (length, limit, validationInfoLenght) => {
+    validationInfoLenght.innerText = `${length}/${limit}`;
+    if (length > limit) {
+        validationInfoLenght.classList.add(ALERT_VALUE_CLASSNAME);
+    }
+    else {
+        validationInfoLenght.classList.remove(ALERT_VALUE_CLASSNAME);
+    }
+}
+
+const checkLenght = () => {
     const titleLength = inputTitleNode.value.length;
     const textLength = inputTextNode.value.length;
-    validationInfoTitleNode.innerText = `${titleLength}/${LIMIT_LENGHT_TITLE}`;
-    validationInfoTextNode.innerText = `${textLength}/${LIMIT_LENGHT_TEXT}`;
-    if (titleLength > LIMIT_LENGHT_TITLE) {
-        validationInfoTitleNode.classList.add(ALERT_VALUE_CLASSNAME);
-    }
-    else {
-        validationInfoTitleNode.classList.remove(ALERT_VALUE_CLASSNAME);
-    }
     
-    if (textLength > LIMIT_LENGHT_TEXT) {
-        validationInfoTextNode.classList.add(ALERT_VALUE_CLASSNAME);
-    }
-    else {
-        validationInfoTextNode.classList.remove(ALERT_VALUE_CLASSNAME);
-    }
+    showWarningLenght(titleLength, LIMIT_LENGHT_TITLE, validationInfoTitleNode);
+    showWarningLenght(textLength, LIMIT_LENGHT_TEXT, validationInfoTextNode);
     disabledBtn();    
 }
 
+inputTitleNode.addEventListener('input', checkLenght);
+inputTextNode.addEventListener('input', checkLenght);
 
-inputTitleNode.addEventListener('input', checkingLenght);
-inputTextNode.addEventListener('input', checkingLenght);
+function isExitingValue (value, validationInfo) {
+    if (!value) {
+        validationInfo.style.visibility = "visible"; 
+        return true;
+    }
+    validationInfo.style.visibility = "hidden";
+}
 
 publicPostBtn.addEventListener('click', function() {
     const postFormUser = getPostFromUser ();   
-    if (!inputTitleNode.value && !inputTextNode.value) {
-        validationInfoTitleAlert.style.visibility = "visible";
-        validationInfoTextAlert.style.visibility = "visible";
+    
+    if (isExitingValue(inputTitleNode.value, validationInfoTitleAlert) == true |
+    isExitingValue(inputTextNode.value, validationInfoTextAlert) == true)
+    {
         return;
     }
-    if (!inputTitleNode.value) {
-        validationInfoTitleAlert.style.visibility = "visible";
-        return
-    }
-    else {
-        validationInfoTitleAlert.style.visibility = "hidden";
-    };
-    if (!inputTextNode.value) {
-        validationInfoTextAlert.style.visibility = "visible";
-        return
-    }
-    else {
-        validationInfoTextAlert.style.visibility = "hidden";
-    };
-    
-    inputClearing ();
+       
+    clearInput ();
     addPost(postFormUser);
     renderPost();
 })
@@ -94,7 +85,7 @@ function getPostFromUser () {
     }
 }
 
-function inputClearing () {
+function clearInput () {
     inputTitleNode.value = '';
     inputTextNode.value = '';  
     validationInfoTitleNode.innerText = `0/${LIMIT_LENGHT_TITLE}`;
